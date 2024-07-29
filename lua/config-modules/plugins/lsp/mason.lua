@@ -5,12 +5,13 @@ if not mason_status then
   return
 end
 
+-- Plugin that integrates mason with lspconfig
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
   return
 end
 
--- import mason-null-ls plugin safely
+-- Plugin that integrates mason with null-ls
 local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
 if not mason_null_ls_status then
   return
@@ -18,8 +19,10 @@ end
 
 mason.setup()
 
--- Installation of Language Servers
+-- Integration of mason and lsp_config
+-- Manages some configuration of the language servers
 mason_lspconfig.setup({
+  -- Ensure that the following language servers are installed
   ensure_installed = {
     "tsserver", -- Enabled
     "html", -- Enabled
@@ -35,24 +38,25 @@ mason_lspconfig.setup({
     "tflint", -- Enabled
     "biome", -- Enabled
     "snyk_ls", -- Enabled
+    "bicep", -- Enabled
   },
-  -- auto-install configured servers (with lspconfig)
+  -- Auto installs the ensured_installed list above
   automatic_installation = true, -- not the same as ensure_installed
 })
 
--- Installations of linters and formatters
+-- Integration of mason and null_ls. Install and manages formatters and linters
 mason_null_ls.setup({
-  -- list of formatters & linters for mason to install
+  -- Required that the following list of lints and formatters are installed.
   ensure_installed = {
     "stylua", -- lua formatter
     "eslint_d", -- ts/js linter
-    "tflint",
-    "biome",
-    "buf",
-    "jsonlint",
-    "snyk",
-    "commitlint",
+    "tflint", -- terraform linter
+    "biome", -- ts/js/json linter
+    "buf", -- protobuf linter
+    "jsonlint", -- json formatter and linter
+    "snyk", -- security scanner
+    "commitlint", -- lint commit messages
   },
-  -- auto-install configured formatters & linters (with null-ls)
+  -- Auto installs the linters and formatters in the ensure_installed list
   automatic_installation = true,
 })

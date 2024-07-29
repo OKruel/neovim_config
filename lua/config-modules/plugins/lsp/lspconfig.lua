@@ -134,7 +134,9 @@ lspconfig["lua_ls"].setup({
 lspconfig["bicep"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  -- cmd = { "bicep-lsp", "--stdio" },
   filetypes = { "bicep" },
+  -- root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
 })
 
 -- configure emmet language server

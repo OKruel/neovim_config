@@ -46,7 +46,7 @@ if not status then
 end
 
 return packer.startup(function(use)
-  -- This is where we can add all the plugins
+  -- This is where we can add the plugins
   -- By telling the name of the github repository packer will install and update it
 
   -- Everytime a file is saved this plugin checks if everything is up to date.
@@ -55,15 +55,15 @@ return packer.startup(function(use)
   -- Plugins with lua functions that many other lua plugins use
   use("nvim-lua/plenary.nvim")
 
-  -- Color Themes:
-  -- The color theme is downloaded here and requires config at colorscheme.lua file
+  ---------- User Interface Plugins ----------
+  -- NeoVim Themes. They are here downloaded and must be configured at colorscheme.lua
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "ellisonleao/gruvbox.nvim" })
   use("AlexvZyl/nordic.nvim")
   use("comfysage/evergarden")
 
-  -- Use interface plugins
-  use({ "levouh/tint.nvim" }) -- Changes the opaquiness of the not focused windows
+  -- Changes the opaquiness of the not focused windows
+  use({ "levouh/tint.nvim" })
 
   -- Better UI for the command line
   use({
@@ -72,41 +72,10 @@ return packer.startup(function(use)
       { "MunifTanjim/nui.nvim" },
     },
   })
-
-  ---------------------- Window related plugins--------------
-  -- Split windos within TMUX
-  -- Examples: press space sk
-  use("christoomey/vim-tmux-navigator")
-
-  -- Maximize and restore current window
-  -- This uses keymap shortcuts
-  use("szw/vim-maximizer")
-
-  -- winresize
-  use("simeji/winresizer") -- resize all the new vim windows
-
-  ---------------------- Vim essentials plugins --------
-  ---- Surround selection (words, sentences)
-  use("tpope/vim-surround")
-
-  ---- Replace word with the one in the register
-  -- Example: yiw (copy the whole word)  griw (replace the word with the register)
-  use("vim-scripts/ReplaceWithRegister")
-
-  ---- Comment with gc
-  -- Example: select with visual mode and press 'gc'
-  use("numToStr/Comment.nvim")
-
-  ---- Making notes
-  -- Example: press space and 'ww' to open the wiki notes
-  use("vimwiki/vimwiki")
-
-  ---- Statusline
-  -- It creates a customizable line at the bottom of the screeen
+  -- Statusline. Creates a customizable line at the bottom of the screeen
   use("nvim-lualine/lualine.nvim")
 
-  -- Cokeline
-  -- It creates a customizable line at the top of the screen
+  -- Cokeline. It creates a customizable line at the top of the screen
   use({
     "willothy/nvim-cokeline",
     commit = "8b877a9",
@@ -115,6 +84,32 @@ return packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", -- If you want devicons
     },
   })
+
+  ---------- Window related plugins ----------
+  -- Split windos within TMUX. Examples: press space sk
+  use("christoomey/vim-tmux-navigator")
+
+  -- Maximize and restore current window. This uses keymap shortcuts
+  use("szw/vim-maximizer")
+
+  -- Winresize. resize all the new vim windows
+  use("simeji/winresizer")
+
+  ---------- Vim essentials plugins ----------
+  -- Surround selection (words, sentences)
+  use("tpope/vim-surround")
+
+  ---- Replace word with the one in the register
+  -- Example: yiw (copy the whole word)  griw (replace the word with the register)
+  use("vim-scripts/ReplaceWithRegister")
+
+  -- Comment with gc. Example: select with visual mode and press 'gc'
+  use("numToStr/Comment.nvim")
+
+  ---- Making notes
+  -- Example: press space and 'ww' to open the wiki notes
+  use("vimwiki/vimwiki")
+
   -- Highlight trailing whitespace
   use({
     "johnfrankmorgan/whitespace.nvim",
@@ -188,16 +183,11 @@ return packer.startup(function(use)
   --- Undo tree
   use("mbbill/undotree")
 
-  ---- Snippets
-  use("L3MON4D3/LuaSnip")
-  use("saadparwaiz1/cmp_luasnip")
-  use("rafamadriz/friendly-snippets")
-
   ---- Buffer Management
   use("j-morano/buffer_manager.nvim")
 
   ----------- Language Servers Protocol --------------------------
-  ---- Managing and installing language server protocol
+  ---- Mason. Managed and installs language server protocol
   use("williamboman/mason.nvim")
   use("williamboman/mason-lspconfig.nvim")
   use({ "j-hui/fidget.nvim", tag = "legacy" }) -- Show the status of the current LSP server
@@ -207,27 +197,35 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-path")
 
+  ---- Snippets
+  use("L3MON4D3/LuaSnip")
+  use("saadparwaiz1/cmp_luasnip")
+  use("rafamadriz/friendly-snippets")
+
   ---- Configuring LSP servers
-  use("neovim/nvim-lspconfig")
-  use("hrsh7th/cmp-nvim-lsp")
+  use("neovim/nvim-lspconfig") -- LSP configurations
+  use("hrsh7th/cmp-nvim-lsp") -- Configures nvim-cmp to work with nvim-lsp
   use({
-    "glepnir/lspsaga.nvim",
+    "glepnir/lspsaga.nvim", -- enhanced LSP UI
     commit = "91ae0e7",
     -- branch = "main",
     requires = {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-  }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim")
-  use("onsails/lspkind.nvim")
+  })
 
-  use("carlsmedstad/vim-bicep") -- Bicep language support
+  use("jose-elias-alvarez/typescript.nvim") -- Typescript language support
+  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and indentation
+
+  use("onsails/lspkind.nvim") -- Adds icons to the LSP suggestions
+
   ---- Formating and linting
   use("jose-elias-alvarez/null-ls.nvim")
   use("jayp0521/mason-null-ls.nvim")
 
-  -- treesitter configuration
+  -- Treesitter configuration
+  -- Responsible for syntax highlighting, code navigation, jumps in the code.
   use({
     "nvim-treesitter/nvim-treesitter",
     run = function()
