@@ -1,4 +1,5 @@
 local opt = vim.opt -- for conciseness
+local cmd = vim.cmd
 
 -- swap files
 opt.swapfile = true
@@ -14,6 +15,12 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- Folding method
+cmd([[
+  autocmd BufRead,BufNewFile * set foldmethod=indent
+]])
+cmd([[
+  autocmd FileType markdown setlocal foldmethod=indent
+]])
 -- opt.foldmethod = "indent"
 opt.foldlevel = 0
 opt.foldminlines = 1

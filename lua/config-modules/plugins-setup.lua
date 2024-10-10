@@ -55,6 +55,45 @@ return packer.startup(function(use)
   -- Plugins with lua functions that many other lua plugins use
   use("nvim-lua/plenary.nvim")
 
+
+  ----------- Language Servers Protocol --------------------------
+  ----- Core LSP packages
+  use("neovim/nvim-lspconfig") --> Core package to configure LSP servers
+  use("williamboman/mason.nvim") --> UI to install and manage LSP servers, linters, and formatters
+  use("hrsh7th/nvim-cmp") --> The main completion engine for Neovim
+  -- use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
+
+  ----- Core LSP packages Integration
+  use("williamboman/mason-lspconfig.nvim") --> Integrated mason with nvim-lsp
+  use("hrsh7th/cmp-nvim-lsp") --> Integrated nvim-cmp with nvim-lsp
+  -- use("jayp0521/mason-null-ls.nvim")
+
+  --- CMP package enhancements
+  use("hrsh7th/cmp-buffer") --> cmp source for buffer words
+  use("hrsh7th/cmp-path") --> cmp source for file paths
+  use("onsails/lspkind.nvim") -- Integrates with cmp to display the auto complete icons
+  use("L3MON4D3/LuaSnip") --> provides a snippet engine for nvim-cmp
+  use("saadparwaiz1/cmp_luasnip") --> integrates luasnip with cmp
+  use('honza/vim-snippets') --> snippets for many languages
+  -- use("norcalli/snippets.nvim") --> fast and lightweight snippets plugin
+  -- use("rafamadriz/friendly-snippets")
+
+  --- Lsp-config package enhancements
+  use({ "j-hui/fidget.nvim" }) -- Show the status of the current LSP server
+  use({ "glepnir/lspsaga.nvim", -- Hover info, code actions, diagnostics, etc...
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+  })
+
+  --- LSPs for specific languages enhancements
+  -- use("jose-elias-alvarez/typescript.nvim") -- Typescript language support
+  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and indentation
+  -------------------------------------------------------------------
+  -------------------------------------------------------------------
+
+
   ---------- User Interface Plugins ----------
   -- NeoVim Themes. They are here downloaded and must be configured at colorscheme.lua
   use({ "catppuccin/nvim", as = "catppuccin" })
@@ -115,18 +154,10 @@ return packer.startup(function(use)
     "johnfrankmorgan/whitespace.nvim",
     config = function()
       require("whitespace-nvim").setup({
-        -- configuration options and their defaults
-
-        -- `highlight` configures which highlight is used to display
-        -- trailing whitespace
         highlight = "DiffDelete",
-
-        -- `ignored_filetypes` configures which filetypes to ignore when
-        -- displaying trailing whitespace
-        ignored_filetypes = { "TelescopePrompt", "Trouble", "help" },
-
-        -- `ignore_terminal` configures whether to ignore terminal buffers
+        ignored_filetypes = { "TelescopePrompt", "Trouble", "help", "dashboard" },
         ignore_terminal = true,
+        return_cursor = true,
       })
 
       -- remove trailing whitespace with a keybinding
@@ -186,43 +217,7 @@ return packer.startup(function(use)
   ---- Buffer Management
   use("j-morano/buffer_manager.nvim")
 
-  ----------- Language Servers Protocol --------------------------
-  ---- Mason. Managed and installs language server protocol
-  use("williamboman/mason.nvim")
-  use("williamboman/mason-lspconfig.nvim")
-  use({ "j-hui/fidget.nvim", tag = "legacy" }) -- Show the status of the current LSP server
 
-  ---- Autocompletion and Language Servers
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-
-  ---- Snippets
-  use("L3MON4D3/LuaSnip")
-  use("saadparwaiz1/cmp_luasnip")
-  use("rafamadriz/friendly-snippets")
-
-  ---- Configuring LSP servers
-  use("neovim/nvim-lspconfig") -- LSP configurations
-  use("hrsh7th/cmp-nvim-lsp") -- Configures nvim-cmp to work with nvim-lsp
-  use({
-    "glepnir/lspsaga.nvim", -- enhanced LSP UI
-    commit = "91ae0e7",
-    -- branch = "main",
-    requires = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-  })
-
-  use("jose-elias-alvarez/typescript.nvim") -- Typescript language support
-  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and indentation
-
-  use("onsails/lspkind.nvim") -- Adds icons to the LSP suggestions
-
-  ---- Formating and linting
-  use("jose-elias-alvarez/null-ls.nvim")
-  use("jayp0521/mason-null-ls.nvim")
 
   -- Treesitter configuration
   -- Responsible for syntax highlighting, code navigation, jumps in the code.

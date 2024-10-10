@@ -10,6 +10,6 @@ if not status then
 end
 
 -- Add custom collors to the nvim tree folders
-vim.cmd([[highlight NvimTreeFolderName guifg=#00c800]])
-vim.cmd([[highlight NvimTreeOpenedFolderName guifg=#00c800]])
-vim.cmd([[highlight NvimTreeEmptyFolderName guifg=#00c800]])
+vim.cmd([[highlight NvimTreeFolderName guifg=#677D6A]])
+vim.cmd([[highlight NvimTreeOpenedFolderName guifg=#BEC6A0]])
+vim.cmd([[highlight NvimTreeEmptyFolderName guifg=#677D6A]])

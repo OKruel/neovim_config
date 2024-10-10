@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?/init.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1710088188/lib/lua/5.1/?.so"
+local package_path_str = "/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?/init.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?.lua;/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/olavokruel/.cache/nvim/packer_hererocks/2.1.1727870382/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -165,11 +165,6 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
     url = "https://github.com/VonHeikemen/fine-cmdline.nvim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
-  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
@@ -210,11 +205,6 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
-  ["mason-null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
-    url = "https://github.com/jayp0521/mason-null-ls.nvim"
-  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -234,11 +224,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -323,11 +308,6 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
-  ["typescript.nvim"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/typescript.nvim",
-    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
-  },
   undotree = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/undotree",
@@ -376,6 +356,11 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-maximizer",
     url = "https://github.com/szw/vim-maximizer"
   },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    url = "https://github.com/honza/vim-snippets"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-surround",
@@ -397,7 +382,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/which-key.nvim"
   },
   ["whitespace.nvim"] = {
-    config = { "\27LJ\2\nþ\1\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\4\0\0\20TelescopePrompt\fTrouble\thelp\1\0\3\22ignored_filetypes\0\20ignore_terminal\2\14highlight\15DiffDelete\nsetup\20whitespace-nvim\frequire\0" },
+    config = { "\27LJ\2\n—\2\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\5\0\0\20TelescopePrompt\fTrouble\thelp\14dashboard\1\0\4\14highlight\15DiffDelete\18return_cursor\2\22ignored_filetypes\0\20ignore_terminal\2\nsetup\20whitespace-nvim\frequire\0" },
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/whitespace.nvim",
     url = "https://github.com/johnfrankmorgan/whitespace.nvim"
@@ -410,14 +395,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: whitespace.nvim
-time([[Config for whitespace.nvim]], true)
-try_loadstring("\27LJ\2\nþ\1\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\4\0\0\20TelescopePrompt\fTrouble\thelp\1\0\3\22ignored_filetypes\0\20ignore_terminal\2\14highlight\15DiffDelete\nsetup\20whitespace-nvim\frequire\0", "config", "whitespace.nvim")
-time([[Config for whitespace.nvim]], false)
 -- Config for: ChatGPT.nvim
 time([[Config for ChatGPT.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fchatgpt\frequire\0", "config", "ChatGPT.nvim")
 time([[Config for ChatGPT.nvim]], false)
+-- Config for: whitespace.nvim
+time([[Config for whitespace.nvim]], true)
+try_loadstring("\27LJ\2\n—\2\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\5\0\0\20TelescopePrompt\fTrouble\thelp\14dashboard\1\0\4\14highlight\15DiffDelete\18return_cursor\2\22ignored_filetypes\0\20ignore_terminal\2\nsetup\20whitespace-nvim\frequire\0", "config", "whitespace.nvim")
+time([[Config for whitespace.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14telescope\frequire\0", "config", "telescope.nvim")
@@ -430,13 +415,6 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'DBUIAddConnection', function(cmdargs)
-          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIAddConnection', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DBUIAddConnection ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'DBUIFindBuffer', function(cmdargs)
           require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIFindBuffer', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -457,6 +435,13 @@ pcall(vim.api.nvim_create_user_command, 'DBUIToggle', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('DBUIToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DBUIAddConnection', function(cmdargs)
+          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIAddConnection', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DBUIAddConnection ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 

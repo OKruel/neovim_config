@@ -8,15 +8,15 @@ if not luasnip_status then
   return
 end
 
--- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
 if not lspkind_status then
   return
 end
 
--- load friendly-snippets
-require("luasnip/loaders/from_vscode").lazy_load()
+-- -- load friendly-snippets
+-- require("luasnip/loaders/from_vscode").lazy_load()
 
+-- Set completeopt to have a better completion experience
 vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
@@ -38,7 +38,7 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
-    { name = "nvim_lsp" }, -- lsp
+    { name = "nvim_lsp" }, -- lsp autocomplete
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- files system paths
@@ -48,6 +48,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = lspkind.cmp_format({
+      mode = "symbol",
       maxwidth = 50,
       ellipsis_char = "...",
     }),
