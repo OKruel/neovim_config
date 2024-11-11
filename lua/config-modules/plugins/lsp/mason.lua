@@ -26,7 +26,7 @@ mason_lspconfig.setup({
   ensure_installed = {
     "bicep", -- Enabled
     "terraformls", -- Enabled
-    "powershell_es", -- Enabled
+    -- "powershell_es", -- Enabled
     "azure_pipelines_ls", -- Enabled
     "lua_ls", -- Enabled
     "bashls", -- Enabled

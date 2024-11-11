@@ -61,12 +61,12 @@ return packer.startup(function(use)
   use("neovim/nvim-lspconfig") --> Core package to configure LSP servers
   use("williamboman/mason.nvim") --> UI to install and manage LSP servers, linters, and formatters
   use("hrsh7th/nvim-cmp") --> The main completion engine for Neovim
-  -- use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
+  use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
 
   ----- Core LSP packages Integration
   use("williamboman/mason-lspconfig.nvim") --> Integrated mason with nvim-lsp
   use("hrsh7th/cmp-nvim-lsp") --> Integrated nvim-cmp with nvim-lsp
-  -- use("jayp0521/mason-null-ls.nvim")
+  use("jayp0521/mason-null-ls.nvim") --> Integrated mason with null-ls
 
   --- CMP package enhancements
   use("hrsh7th/cmp-buffer") --> cmp source for buffer words
@@ -88,8 +88,9 @@ return packer.startup(function(use)
   })
 
   --- LSPs for specific languages enhancements
+  -- use("TheLeoP/powershell.nvim") --
   -- use("jose-elias-alvarez/typescript.nvim") -- Typescript language support
-  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and indentation
+  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and identation
   -------------------------------------------------------------------
   -------------------------------------------------------------------
 
