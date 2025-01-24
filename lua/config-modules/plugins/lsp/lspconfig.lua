@@ -99,9 +99,6 @@ lspconfig["azure_pipelines_ls"].setup({
       },
     },
   },
-
-
-
 })
 
 lspconfig["docker_ls"].setup({
@@ -140,6 +137,12 @@ lspconfig["ts_ls"].setup({
   on_attach = on_attach,
 })
 
+
+lspconfig["html"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 lspconfig["bicep"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
@@ -148,7 +151,9 @@ lspconfig["bicep"].setup({
   filetypes = { "bicep" },
   -- root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
   root_dir = function(fname)
-    return lspconfig.util.root_pattern("*.bicep")(fname) or lspconfig.util.path.dirname(fname)
+    return lspconfig.util.root_pattern("bicepconfig.json")(fname) or
+           lspconfig.util.root_pattern("*.bicep")(fname) or
+           lspconfig.util.path.dirname(fname)
   end,
   settings = {
     bicep = {

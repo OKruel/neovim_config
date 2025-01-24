@@ -15,15 +15,23 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- Folding method
-cmd([[
-  autocmd BufRead,BufNewFile * set foldmethod=indent
-]])
-cmd([[
-  autocmd FileType markdown setlocal foldmethod=indent
-]])
--- opt.foldmethod = "indent"
+-- cmd([[
+--   autocmd BufRead,BufNewFile * set foldmethod=indent
+-- ]])
+-- cmd([[
+--   autocmd FileType markdown setlocal foldmethod=indent
+-- ]])
+opt.foldmethod = "indent"
 opt.foldlevel = 0
 opt.foldminlines = 1
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "vimwiki" },
+  callback = function()
+    vim.opt_local.foldmethod = "indent"
+  end,
+})
+
 
 -- line wraping
 opt.wrap = true

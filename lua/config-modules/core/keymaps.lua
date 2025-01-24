@@ -22,27 +22,28 @@ end
 
 ------ Personal keymaps -------
 keymap.set("n", "<leader>fi", ":lua vim.lsp.buf.format()<cr>") -- format code
-keymap.set("n", "<leader>nh", ":nohl<CR>") -- Clear the highlighted words
+keymap.set("n", "<leader>nh", ":nohl<CR>")                     -- Clear the highlighted words
+keymap.set("n", "<leader>cd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>")        -- Insert the current date
 -- keymap.set("i", "jk", "<ESC>")                              -- In insert mode jk will be the same as esc
-keymap.set("i", "<ESC>", "<ESC>") -- In insert mode jk will be the same as esc
-keymap.set("n", "x", '"_x') -- The character removed with "x" will not be added to the register
-keymap.set("n", "<leader>u", ":UndotreeToggle<cr>") -- Display the tree with the recent changes
-keymap.set("n", "<leader>cy", "gg0VGy") -- Display the tree with the recent changes
+keymap.set("i", "<ESC>", "<ESC>")                         -- In insert mode jk will be the same as esc
+keymap.set("n", "x", '"_x')                               -- The character removed with "x" will not be added to the register
+keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")       -- Display the tree with the recent changes
+keymap.set("n", "<leader>cy", "gg0VGy")                   -- Display the tree with the recent changes
 map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true }) -- Display the neovim command line in a nice input
 -- Database Manager
 -- keymap.set("n", "<leader>do", ":DBUIToggle<cr>")                                      -- Display the tree with the recent changes
 -- Folding
 keymap.set("n", "<leader>Fi", ":set foldmethod=indent<CR>")
 keymap.set("n", "<leader>Fm", ":set foldmethod=manual<CR>")
-keymap.set("n", "<leader>Fo", "zo") -- Open folder under the cursor
-keymap.set("n", "<leader>FO", "zO") -- Open all the folders recursivelly under the cursor
-keymap.set("n", "<leader>Fc", "zc") -- Close folder under the cursor
-keymap.set("n", "<leader>FC", "zM") -- Close all foldings
-keymap.set("n", "<leader>Fa", "zR") -- Open all foldings
+keymap.set("n", "<leader>Fo", "zo")                                                   -- Open folder under the cursor
+keymap.set("n", "<leader>FO", "zO")                                                   -- Open all the folders recursivelly under the cursor
+keymap.set("n", "<leader>Fc", "zc")                                                   -- Close folder under the cursor
+keymap.set("n", "<leader>FC", "zM")                                                   -- Close all foldings
+keymap.set("n", "<leader>Fa", "zR")                                                   -- Open all foldings
 keymap.set("n", "<leader>Fl", "<cmd>loadview<CR>", { noremap = true, silent = true }) -- Load the last folding
-keymap.set("n", "<leader>Fs", "<cmd>mkview<CR>", { noremap = true, silent = true }) -- Save the current folding
+keymap.set("n", "<leader>Fs", "<cmd>mkview<CR>", { noremap = true, silent = true })   -- Save the current folding
 --- ChatGPT keymaps
-keymap.set("n", "<leader>cg", ":ChatGPT<cr>") -- Normal GPT prompt
+keymap.set("n", "<leader>cg", ":ChatGPT<cr>")                                         -- Normal GPT prompt
 keymap.set("v", "<leader>ct", ":ChatGPTRun add_tests<cr>")
 keymap.set("v", "<leader>cc", ":ChatGPTRun complete_code<cr>")
 keymap.set("v", "<leader>ce", ":ChatGPTRun explain_code<cr>")
@@ -51,8 +52,8 @@ keymap.set("v", "<leader>cf", ":ChatGPTRun fix_bugs<cr>")
 keymap.set("v", "<leader>cr", ":ChatGPTRun code_readability_analysis<cr>")
 --- Copilot keymaps
 keymap.set("n", "<leader>cs", ":Copilot status<cr>") -- Copilot activation status
-keymap.set("v", "<leader>cp", ":Copilot panel<cr>") -- Visual Mode. Copilot options panel
-keymap.set("n", "<leader>cp", ":Copilot panel<cr>") -- Normal Mode. Copilot options panel
+keymap.set("v", "<leader>cp", ":Copilot panel<cr>")  -- Visual Mode. Copilot options panel
+keymap.set("n", "<leader>cp", ":Copilot panel<cr>")  -- Normal Mode. Copilot options panel
 --- Git Keymaps Fugitive
 keymap.set("n", "<leader>Gv", ":vertical Git<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>Gs", ":Git status<cr>")
@@ -72,10 +73,10 @@ for i = 1, 9 do
 end
 --------- Windows related keymaps --------------
 -- Split the windows
-keymap.set("n", "<leader>s|", "<C-w>v") -- Split window vertically
-keymap.set("n", "<leader>s-", "<C-w>s") -- Split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
-keymap.set("n", "<leader>sx", ":bdelete<CR>") -- close the current window
+keymap.set("n", "<leader>s|", "<C-w>v")                     -- Split window vertically
+keymap.set("n", "<leader>s-", "<C-w>s")                     -- Split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=")                     -- make split windows equal width
+keymap.set("n", "<leader>sx", ":bdelete<CR>")               -- close the current window
 -- Changes window size
 keymap.set("n", "<leader>ss", ":WinResizerStartResize<cr>") -- Increase window size
 
@@ -100,8 +101,8 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 keymap.set("n", "<leader>fo", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fb", ":lua require(bookmarks).extensions.bookmarks.list({layout_strategy='vertical'})") -- Bookmarks
 -- Telescope Git worktrees
-keymap.set("n", "<leader>fwo", ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>") -- Display the workstrees with telescope
-keymap.set("n", "<leader>fwa", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>") -- Use telescope to create a new git worktree
+keymap.set("n", "<leader>fwo", ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>")          -- Display the workstrees with telescope
+keymap.set("n", "<leader>fwa", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>")    -- Use telescope to create a new git worktree
 
 ------ Spectre ---------
 keymap.set("n", "<leader>sf", '<cmd>lua require("spectre").toggle()<CR>', {
@@ -120,18 +121,18 @@ keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({sel
 -- Harpoon ------
 -- The file can be removed from harpoon from within the navigation window
 keymap.set("n", "<leader>ho", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>") -- Toggle the harpoon view
-keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>") -- Add file to harpoon
+keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>")        -- Add file to harpoon
 
 -- Managing tabs
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- Open a new tab
+keymap.set("n", "<leader>to", ":tabnew<CR>")   -- Open a new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- Close a tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
+keymap.set("n", "<leader>tn", ":tabn<CR>")     -- go to next tab
+keymap.set("n", "<leader>tp", ":tabp<CR>")     -- go to previous tab
 
 --- LSP ---------
 -- LSP informations
-keymap.set("n", "<leader>li", ":LspInfo<CR>") -- Show LSP info
+keymap.set("n", "<leader>li", ":LspInfo<CR>")         -- Show LSP info
 keymap.set("n", "<leader>lr", ":LspRestart Info<CR>") -- Show LSP info
 -- LSP trouble list
-keymap.set("n", "<leader>xx", ":TroubleToggle<CR>") -- Show LSP info
-keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>") -- Show LSP info
+keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")   -- Show LSP info
+keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>")  -- Show LSP info

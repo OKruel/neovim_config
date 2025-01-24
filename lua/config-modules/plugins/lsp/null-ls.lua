@@ -22,10 +22,16 @@ null_ls.setup({
 
     null_ls.builtins.code_actions.shellcheck,
 
+
+
     -- Formatters
     formatting.shfmt.with({}),
     formatting.stylua.with({}),
     formatting.buf.with({}),
+
+    null_ls.builtins.formatting.prettierd.with({
+      filetypes = { "html", "css", },
+    }),
 
     -- Diagnostic
     diagnostics.commitlint.with({}),
