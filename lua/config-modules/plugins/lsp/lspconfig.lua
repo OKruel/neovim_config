@@ -101,7 +101,7 @@ lspconfig["azure_pipelines_ls"].setup({
   },
 })
 
-lspconfig["docker_ls"].setup({
+lspconfig["dockerls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

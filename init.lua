@@ -1,3 +1,7 @@
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
+
+
 -- This import all the plugins with packer. Plugin manager
 require("config-modules.plugins-setup") -- This should be at the top of this file
 
@@ -7,12 +11,12 @@ require("config-modules.core.keymaps")
 require("config-modules.core.colorscheme")
 
 -- Plugins custom configurations to language servers
-require("config-modules.plugins.lsp.nvim-cmp") -- Configures the auto completion
-require("config-modules.plugins.lsp.mason") -- Manage installation of LSPs and Linters/formatters
-require("config-modules.plugins.lsp.lspsaga") -- Used with live_grep telescope function
+require("config-modules.plugins.lsp.nvim-cmp")  -- Configures the auto completion
+require("config-modules.plugins.lsp.mason")     -- Manage installation of LSPs and Linters/formatters
+require("config-modules.plugins.lsp.lspsaga")   -- Used with live_grep telescope function
 require("config-modules.plugins.lsp.lspconfig") -- Installation of LSPs
-require("config-modules.plugins.lsp.null-ls") -- Installation of linters/formatters
-require("config-modules.plugins.lsp.fidget") -- Displays LSPs status
+require("config-modules.plugins.lsp.null-ls")   -- Installation of linters/formatters
+require("config-modules.plugins.lsp.fidget")    -- Displays LSPs status
 
 -- Plugins of Nvim Themes
 require("config-modules.plugins.themes.catppuccin")
@@ -44,3 +48,5 @@ require("config-modules.plugins.cokeline")
 require("config-modules.plugins.buffer-manager")
 require("config-modules.plugins.tint")
 require("config-modules.plugins.fine-cmdline")
+require("config-modules.plugins.image")
+require("config-modules.plugins.diagram")

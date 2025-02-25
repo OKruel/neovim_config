@@ -58,29 +58,30 @@ return packer.startup(function(use)
 
   ----------- Language Servers Protocol --------------------------
   ----- Core LSP packages
-  use("neovim/nvim-lspconfig") --> Core package to configure LSP servers
-  use("williamboman/mason.nvim") --> UI to install and manage LSP servers, linters, and formatters
-  use("hrsh7th/nvim-cmp") --> The main completion engine for Neovim
+  use("neovim/nvim-lspconfig")           --> Core package to configure LSP servers
+  use("williamboman/mason.nvim")         --> UI to install and manage LSP servers, linters, and formatters
+  use("hrsh7th/nvim-cmp")                --> The main completion engine for Neovim
   use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
 
   ----- Core LSP packages Integration
   use("williamboman/mason-lspconfig.nvim") --> Integrated mason with nvim-lsp
-  use("hrsh7th/cmp-nvim-lsp") --> Integrated nvim-cmp with nvim-lsp
-  use("jayp0521/mason-null-ls.nvim") --> Integrated mason with null-ls
+  use("hrsh7th/cmp-nvim-lsp")              --> Integrated nvim-cmp with nvim-lsp
+  use("jayp0521/mason-null-ls.nvim")       --> Integrated mason with null-ls
 
   --- CMP package enhancements
-  use("hrsh7th/cmp-buffer") --> cmp source for buffer words
-  use("hrsh7th/cmp-path") --> cmp source for file paths
-  use("onsails/lspkind.nvim") -- Integrates with cmp to display the auto complete icons
-  use("L3MON4D3/LuaSnip") --> provides a snippet engine for nvim-cmp
+  use("hrsh7th/cmp-buffer")       --> cmp source for buffer words
+  use("hrsh7th/cmp-path")         --> cmp source for file paths
+  use("onsails/lspkind.nvim")     -- Integrates with cmp to display the auto complete icons
+  use("L3MON4D3/LuaSnip")         --> provides a snippet engine for nvim-cmp
   use("saadparwaiz1/cmp_luasnip") --> integrates luasnip with cmp
-  use('honza/vim-snippets') --> snippets for many languages
+  use('honza/vim-snippets')       --> snippets for many languages
   -- use("norcalli/snippets.nvim") --> fast and lightweight snippets plugin
   -- use("rafamadriz/friendly-snippets")
 
   --- Lsp-config package enhancements
   use({ "j-hui/fidget.nvim" }) -- Show the status of the current LSP server
-  use({ "glepnir/lspsaga.nvim", -- Hover info, code actions, diagnostics, etc...
+  use({
+    "glepnir/lspsaga.nvim",    -- Hover info, code actions, diagnostics, etc...
     requires = {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-treesitter/nvim-treesitter" },
@@ -112,6 +113,7 @@ return packer.startup(function(use)
       { "MunifTanjim/nui.nvim" },
     },
   })
+
   -- Statusline. Creates a customizable line at the bottom of the screeen
   use("nvim-lualine/lualine.nvim")
 
@@ -120,8 +122,49 @@ return packer.startup(function(use)
     "willothy/nvim-cokeline",
     commit = "8b877a9",
     requires = {
-      "nvim-lua/plenary.nvim", -- Required for v0.4.0+
+      "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
       "kyazdani42/nvim-web-devicons", -- If you want devicons
+    },
+  })
+
+  -- Diagram tool for neovim
+  -- Example for configuring Neovim to load user-installed installed Lua rocks:
+
+  use({ -- Install the image plugin to render the diagrams
+    "3rd/image.nvim",
+    opts = {}
+  })
+
+  use({ -- Install the plugin to write the diagrams
+    "3rd/diagram.nvim",
+    dependencies = {
+      "3rd/image.nvim",
+    },
+    opts = { -- you can just pass {}, defaults below
+      renderer_options = {
+        mermaid = {
+          background = nil, -- nil | "transparent" | "white" | "#hex"
+          theme = nil,      -- nil | "default" | "dark" | "forest" | "neutral"
+          scale = 1,        -- nil | 1 (default) | 2  | 3 | ...
+          width = nil,      -- nil | 800 | 400 | ...
+          height = nil,     -- nil | 600 | 300 | ...
+        },
+        plantuml = {
+          charset = nil,
+        },
+        d2 = {
+          theme_id = nil,
+          dark_theme_id = nil,
+          scale = nil,
+          layout = nil,
+          sketch = nil,
+        },
+        gnuplot = {
+          size = nil,  -- nil | "800,600" | ...
+          font = nil,  -- nil | "Arial,12" | ...
+          theme = nil, -- nil | "light" | "dark" | custom theme string
+        },
+      }
     },
   })
 
@@ -167,7 +210,7 @@ return packer.startup(function(use)
   })
 
   -- auto closing
-  use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+  use("windwp/nvim-autopairs")                                 -- autoclose parens, brackets, quotes, etc...
   use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
   -- indentscope
@@ -243,17 +286,17 @@ return packer.startup(function(use)
 
   -------- GIT ---------------
   -- git integration
-  use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+  use("lewis6991/gitsigns.nvim")        -- show line modifications on left hand side
   -- git blame
-  use("braxtons12/blame_line.nvim") -- show the author of the commmit
+  use("braxtons12/blame_line.nvim")     -- show the author of the commmit
   -- fugitive
-  use("tpope/vim-fugitive") -- Has all git commands inside nvim
+  use("tpope/vim-fugitive")             -- Has all git commands inside nvim
   -- GitDiff for code reviews
-  use("sindrets/diffview.nvim") -- Added split windows to compare codes
+  use("sindrets/diffview.nvim")         -- Added split windows to compare codes
   -- Git worktree
   use("ThePrimeagen/git-worktree.nvim") -- Manage multiple GIT branches at the same time
   -- Git Reflog
-  use("rbong/vim-flog") -- Displays git commits as a graph
+  use("rbong/vim-flog")                 -- Displays git commits as a graph
 
   ---------- Artificial Inteligence ----------------
   -- Github copilot
@@ -270,33 +313,34 @@ return packer.startup(function(use)
       debug = true,
     },
   }) -- AI Copilot Chat
+
   -- ChatGpt
-  use({
-    "jackMort/ChatGPT.nvim",
-    commit = "24bcca7",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    opts = {},
-  })
+  -- use({
+  --   "jackMort/ChatGPT.nvim",
+  --   commit = "24bcca7",
+  --   config = function()
+  --     require("chatgpt").setup()
+  --   end,
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   opts = {},
+  -- })
 
   ---------- Environment Variables ----------------
   -- Vim Dotenv
   use("tpope/vim-dotenv") -- list of keymaps
 
   ---------- Database Managers ----------------
-  use("tpope/vim-dadbod") -- Query DB from Neovim
+  use("tpope/vim-dadbod")                     -- Query DB from Neovim
   use("kristijanhusak/vim-dadbod-completion") -- Auto completion for vim-dadbod
   -- Database Manager
   use({
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {

@@ -30,6 +30,34 @@ keymap.set("n", "x", '"_x')                               -- The character remov
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")       -- Display the tree with the recent changes
 keymap.set("n", "<leader>cy", "gg0VGy")                   -- Display the tree with the recent changes
 map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true }) -- Display the neovim command line in a nice input
+
+vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", { noremap = true, silent = true })
+
+function SurroundWithPlantUML()
+    -- Get the correct start and end positions for visual selection
+    local start_line = vim.fn.line("'<")
+    local end_line = vim.fn.line("'>")
+
+    -- Ensure start_line is always before end_line
+    if start_line > end_line then
+        start_line, end_line = end_line, start_line
+    end
+
+    -- Get the selected lines
+    local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+
+    -- Insert opening block at the beginning
+    table.insert(lines, 1, "```plantuml")
+    -- Insert closing block at the end
+    table.insert(lines, "```")
+
+    -- Replace the original selected lines with the modified lines
+    vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+end
+
+
+
+
 -- Database Manager
 -- keymap.set("n", "<leader>do", ":DBUIToggle<cr>")                                      -- Display the tree with the recent changes
 -- Folding
