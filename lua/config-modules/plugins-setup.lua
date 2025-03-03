@@ -46,7 +46,7 @@ if not status then
 end
 
 return packer.startup(function(use)
-  -- This is where we can add the plugins
+  -- All plugins added here will be installed and updated by packer
   -- By telling the name of the github repository packer will install and update it
 
   -- Everytime a file is saved this plugin checks if everything is up to date.
@@ -59,7 +59,7 @@ return packer.startup(function(use)
   ----------- Language Servers Protocol --------------------------
   ----- Core LSP packages
   use("neovim/nvim-lspconfig")           --> Core package to configure LSP servers
-  use("williamboman/mason.nvim")         --> UI to install and manage LSP servers, linters, and formatters
+  use("williamboman/mason.nvim")         --> UI to install/update/manage and manage LSP servers, linters, and formatters
   use("hrsh7th/nvim-cmp")                --> The main completion engine for Neovim
   use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
 
@@ -75,7 +75,6 @@ return packer.startup(function(use)
   use("L3MON4D3/LuaSnip")         --> provides a snippet engine for nvim-cmp
   use("saadparwaiz1/cmp_luasnip") --> integrates luasnip with cmp
   use('honza/vim-snippets')       --> snippets for many languages
-  -- use("norcalli/snippets.nvim") --> fast and lightweight snippets plugin
   -- use("rafamadriz/friendly-snippets")
 
   --- Lsp-config package enhancements
@@ -89,8 +88,7 @@ return packer.startup(function(use)
   })
 
   --- LSPs for specific languages enhancements
-  -- use("TheLeoP/powershell.nvim") --
-  -- use("jose-elias-alvarez/typescript.nvim") -- Typescript language support
+  use("jose-elias-alvarez/typescript.nvim") -- Enhances typescript LSP with specific extra features
   use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and identation
   -------------------------------------------------------------------
   -------------------------------------------------------------------
@@ -128,8 +126,6 @@ return packer.startup(function(use)
   })
 
   -- Diagram tool for neovim
-  -- Example for configuring Neovim to load user-installed installed Lua rocks:
-
   use({ -- Install the image plugin to render the diagrams
     "3rd/image.nvim",
     opts = {}
@@ -194,20 +190,7 @@ return packer.startup(function(use)
   use("vimwiki/vimwiki")
 
   -- Highlight trailing whitespace
-  use({
-    "johnfrankmorgan/whitespace.nvim",
-    config = function()
-      require("whitespace-nvim").setup({
-        highlight = "DiffDelete",
-        ignored_filetypes = { "TelescopePrompt", "Trouble", "help", "dashboard" },
-        ignore_terminal = true,
-        return_cursor = true,
-      })
-
-      -- remove trailing whitespace with a keybinding
-      vim.keymap.set("n", "<Leader>t", require("whitespace-nvim").trim)
-    end,
-  })
+  use("johnfrankmorgan/whitespace.nvim")
 
   -- auto closing
   use("windwp/nvim-autopairs")                                 -- autoclose parens, brackets, quotes, etc...
@@ -246,7 +229,7 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
   ---- Spectree words replacer
-  -- Searches words with regex in the entire code base and replace it
+  -- Seach and Replace in Multiple files using regex 
   use("nvim-pack/nvim-spectre")
 
   -- Bookmarks
@@ -334,26 +317,26 @@ return packer.startup(function(use)
   use("tpope/vim-dotenv") -- list of keymaps
 
   ---------- Database Managers ----------------
-  use("tpope/vim-dadbod")                     -- Query DB from Neovim
-  use("kristijanhusak/vim-dadbod-completion") -- Auto completion for vim-dadbod
-  -- Database Manager
-  use({
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  })
+  -- use("tpope/vim-dadbod")                     -- Query DB from Neovim
+  -- use("kristijanhusak/vim-dadbod-completion") -- Auto completion for vim-dadbod
+  -- -- Database Manager
+  -- use({
+  --   "kristijanhusak/vim-dadbod-ui",
+  --   dependencies = {
+  --     { "tpope/vim-dadbod",                     lazy = true },
+  --     { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+  --   },
+  --   cmd = {
+  --     "DBUI",
+  --     "DBUIToggle",
+  --     "DBUIAddConnection",
+  --     "DBUIFindBuffer",
+  --   },
+  --   init = function()
+  --     -- Your DBUI configuration
+  --     vim.g.db_ui_use_nerd_fonts = 1
+  --   end,
+  -- })
 
   -- Packer sync function
   if packer_bootstrap then

@@ -25,7 +25,6 @@ which_key.register({
   ["<leader>fi"] = { ":lua vim.lsp.buf.format()<cr>", "Format file" },
   ["<leader>nh"] = { ":nohl<CR>", "Clear the highlighted text" },
   ["<leader>cy"] = { "gg0VGy", "Copy entire page" },
-  ["<leader>do"] = { ":DBUIToggle<cr>", "Toggle Database Manager" },
   -- Folding
   ["<leader>Fo"] = { "zo", "Open folder under the cursor" },
   ["<leader>FO"] = { "zO", "Open all folder recursivelly under the cursor" },
@@ -34,11 +33,15 @@ which_key.register({
   ["<leader>Fa"] = { "zR", "Open all folders" },
   ["<leader>Fl"] = { ":loadview", "Load previous folding state" },
   ["<leader>Fs"] = { ":mkview", "Create a folding state" },
+  -- Spectre Multi Files Word search and replace
+  ["<leader>sf"] = { '<cmd>lua require("spectre").toggle()<CR>', "Spectre - Open" },
+  ["<leader>sw"] = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre - Select Word" },
+  --
   -- Windows manager plugins
-  ["<leader>sv"] = { "<C-w>v", "Split window vertically" },
-  ["<leader>s-"] = { "<C-w>s", "Split window horizontally" },
-  ["<leader>s="] = { "<C-w>=", "Make split windows equal width" },
-  ["<leader>sx"] = { ":close<CR>", "Close current window" },
+  ["<leader>sv"] = { "<C-w>v", "Window Manager - Split vertically" },
+  ["<leader>s-"] = { "<C-w>s", "Window Manager - Split horizontally" },
+  ["<leader>s="] = { "<C-w>=", "Window Manager -Make split windows equal width" },
+  ["<leader>sx"] = { ":close<CR>", "Window Manager - Close current window" },
   -- Chat GPT plugins
   ["<leader>cg"] = { ":ChatGPT<cr>", "Chat GPT prompt" },
   ["<leader>ct"] = { ":ChatGPTRun add_tests<cr>", "GPT - Add tests" },
@@ -49,10 +52,12 @@ which_key.register({
   ["<leader>cr"] = { ":ChatGPTRun code_readability_analysis<cr>", "GPT - Code readability" },
   ["<leader>ci"] = { ":ChatGPTEditWithInstructions<cr>", "GPT - Prompt with instructions" },
   -- Git fugitive
-  ["<leader>Gi"] = { ":Git<cr>", "Open Git Dialog" },
-  ["<leader>Gs"] = { ":Git status<cr>", "Display Git status" },
-  ["<leader>Go"] = { ":DiffviewOpen", "Open branch selection to compare" },
-  ["<leader>Gx"] = { ":DiffviewClose<cr>", "Close git diff viewer" },
+  ["<leader>Gi"] = { ":Git<cr>", "Git Fugitive - Open Changes Horizontal" },
+  ["<leader>Gv"] = { ":vertical Git<cr>", "Git Fugitive - Open Changes Vertical" },
+  ["<leader>Gs"] = { ":Git status<cr>", "Git Fugitive - Display status" },
+  ["<leader>Go"] = { ":DiffviewOpen", "Git Fugitive - Open branch list to compare" },
+  ["<leader>Gx"] = { ":DiffviewClose<cr>", "Git Fugitive - Close Diff viewer" },
+  ["<leader>Gh"] = { ":DiffviewFileHistory<cr>", "Git Fugitive - Display file history" },
   -- Git worktrees
   ["<leader>fw"] = {
     "",

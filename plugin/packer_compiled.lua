@@ -322,6 +322,11 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["typescript.nvim"] = {
+    loaded = true,
+    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/typescript.nvim",
+    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/undotree",
@@ -331,24 +336,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-bicep",
     url = "https://github.com/carlsmedstad/vim-bicep"
-  },
-  ["vim-dadbod"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-dadbod",
-    url = "https://github.com/tpope/vim-dadbod"
-  },
-  ["vim-dadbod-completion"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/vim-dadbod-completion",
-    url = "https://github.com/kristijanhusak/vim-dadbod-completion"
-  },
-  ["vim-dadbod-ui"] = {
-    commands = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/opt/vim-dadbod-ui",
-    url = "https://github.com/kristijanhusak/vim-dadbod-ui"
   },
   ["vim-dotenv"] = {
     loaded = true,
@@ -396,7 +383,6 @@ _G.packer_plugins = {
     url = "https://github.com/folke/which-key.nvim"
   },
   ["whitespace.nvim"] = {
-    config = { "\27LJ\2\n—\2\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\5\0\0\20TelescopePrompt\fTrouble\thelp\14dashboard\1\0\4\20ignore_terminal\2\22ignored_filetypes\0\18return_cursor\2\14highlight\15DiffDelete\nsetup\20whitespace-nvim\frequire\0" },
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/whitespace.nvim",
     url = "https://github.com/johnfrankmorgan/whitespace.nvim"
@@ -409,10 +395,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: whitespace.nvim
-time([[Config for whitespace.nvim]], true)
-try_loadstring("\27LJ\2\n—\2\0\0\a\1\v\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1-\0\0\0009\0\6\0009\0\a\0'\2\b\0'\3\t\0006\4\0\0'\6\1\0B\4\2\0029\4\n\4B\0\4\1K\0\1\0\0\0\ttrim\14<Leader>t\6n\bset\vkeymap\22ignored_filetypes\1\5\0\0\20TelescopePrompt\fTrouble\thelp\14dashboard\1\0\4\20ignore_terminal\2\22ignored_filetypes\0\18return_cursor\2\14highlight\15DiffDelete\nsetup\20whitespace-nvim\frequire\0", "config", "whitespace.nvim")
-time([[Config for whitespace.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14telescope\frequire\0", "config", "telescope.nvim")
@@ -422,39 +404,6 @@ time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
 time([[Sequenced loading]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'DBUIFindBuffer', function(cmdargs)
-          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIFindBuffer', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DBUIFindBuffer ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DBUI', function(cmdargs)
-          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUI', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DBUI ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DBUIToggle', function(cmdargs)
-          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DBUIToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DBUIAddConnection', function(cmdargs)
-          require('packer.load')({'vim-dadbod-ui'}, { cmd = 'DBUIAddConnection', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod-ui'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DBUIAddConnection ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

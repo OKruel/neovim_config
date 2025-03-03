@@ -24,7 +24,6 @@ end
 keymap.set("n", "<leader>fi", ":lua vim.lsp.buf.format()<cr>") -- format code
 keymap.set("n", "<leader>nh", ":nohl<CR>")                     -- Clear the highlighted words
 keymap.set("n", "<leader>cd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>")        -- Insert the current date
--- keymap.set("i", "jk", "<ESC>")                              -- In insert mode jk will be the same as esc
 keymap.set("i", "<ESC>", "<ESC>")                         -- In insert mode jk will be the same as esc
 keymap.set("n", "x", '"_x')                               -- The character removed with "x" will not be added to the register
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")       -- Display the tree with the recent changes
@@ -32,6 +31,8 @@ keymap.set("n", "<leader>cy", "gg0VGy")                   -- Display the tree wi
 map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true }) -- Display the neovim command line in a nice input
 
 vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim)
 
 function SurroundWithPlantUML()
     -- Get the correct start and end positions for visual selection
