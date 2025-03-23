@@ -298,19 +298,18 @@ return packer.startup(function(use)
   }) -- AI Copilot Chat
 
   -- ChatGpt
-  -- use({
-  --   "jackMort/ChatGPT.nvim",
-  --   commit = "24bcca7",
-  --   config = function()
-  --     require("chatgpt").setup()
-  --   end,
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  --   opts = {},
-  -- })
+  use({
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim",
+    }
+  })
 
   ---------- Environment Variables ----------------
   -- Vim Dotenv

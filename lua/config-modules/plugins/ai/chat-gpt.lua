@@ -122,7 +122,7 @@ chat_gpt.setup({
     },
   },
   openai_params = {
-    model = "gpt-4",
+    model = "o3-mini",
     frequency_penalty = 0,
     presence_penalty = 0,
     max_tokens = 300,
