@@ -28,11 +28,11 @@ keymap.set("i", "<ESC>", "<ESC>")                         -- In insert mode jk w
 keymap.set("n", "x", '"_x')                               -- The character removed with "x" will not be added to the register
 keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")       -- Display the tree with the recent changes
 keymap.set("n", "<leader>cy", "gg0VGy")                   -- Display the tree with the recent changes
+keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim) -- Trim the whitespaces
 map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true }) -- Display the neovim command line in a nice input
 
+-- PlantUML
 vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", { noremap = true, silent = true })
-
-vim.keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim)
 
 function SurroundWithPlantUML()
     -- Get the correct start and end positions for visual selection

@@ -9,7 +9,7 @@ image.setup({
   integrations = {
     markdown = {
       enabled = true,
-      clear_in_insert_mode = false,
+      clear_in_insert_mode = true,
       download_remote_images = true,
       only_render_image_at_cursor = false,
       floating_windows = false,              -- Render images within the buffer
@@ -30,13 +30,13 @@ image.setup({
       enabled = false,
     },
   },
-  max_width = nil,
-  max_height = nil,
+  max_width = 1000,
+  max_height = 1000,
   max_width_window_percentage = 100,
-  max_height_window_percentage = 60,
-  window_overlap_clear_enabled = false,                                               -- Disable clearing images when windows overlap
+  max_height_window_percentage = 100,
+  window_overlap_clear_enabled = false, -- Disable clearing images when windows overlap
   window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
-  editor_only_render_when_focused = false,                                            -- Keep images rendered even when the editor loses focus
-  tmux_show_only_in_active_window = false,                                            -- Show images in all Tmux windows
+  editor_only_render_when_focused = false, -- Keep images rendered even when the editor loses focus
+  tmux_show_only_in_active_window = false, -- Show images in all Tmux windows
   hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- Automatically render these image file types
 })

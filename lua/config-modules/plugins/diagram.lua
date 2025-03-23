@@ -26,3 +26,10 @@ diagram.setup({
     },
   },
 })
+
+
+vim.api.nvim_create_user_command("DiagramNewBuffer", function()
+  vim.cmd("new") -- Opens a new buffer
+  diagram.render()
+end, {})
+
