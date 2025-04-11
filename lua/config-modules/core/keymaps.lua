@@ -72,17 +72,28 @@ keymap.set("n", "<leader>Fa", "zR")                                             
 keymap.set("n", "<leader>Fl", "<cmd>loadview<CR>", { noremap = true, silent = true }) -- Load the last folding
 keymap.set("n", "<leader>Fs", "<cmd>mkview<CR>", { noremap = true, silent = true })   -- Save the current folding
 --- ChatGPT keymaps
-keymap.set("n", "<leader>cg", ":ChatGPT<cr>")                                         -- Normal GPT prompt
-keymap.set("v", "<leader>ct", ":ChatGPTRun add_tests<cr>")
-keymap.set("v", "<leader>cc", ":ChatGPTRun complete_code<cr>")
-keymap.set("v", "<leader>ce", ":ChatGPTRun explain_code<cr>")
-keymap.set("v", "<leader>co", ":ChatGPTRun optimize_code<cr>")
-keymap.set("v", "<leader>cf", ":ChatGPTRun fix_bugs<cr>")
-keymap.set("v", "<leader>cr", ":ChatGPTRun code_readability_analysis<cr>")
+keymap.set("n", "<leader>cgchat", ":ChatGPT<cr>")
+keymap.set("v", "<leader>cgchat", ":ChatGPT<cr>")
+keymap.set("v", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
+keymap.set("n", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
+keymap.set("v", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
+keymap.set("n", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
+keymap.set("v", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
+keymap.set("n", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
+keymap.set("v", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
+keymap.set("n", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
+keymap.set("v", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
+keymap.set("n", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
+keymap.set("v", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
+keymap.set("n", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
+keymap.set("v", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
+keymap.set("n", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
+keymap.set("n", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
+keymap.set("v", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
 --- Copilot keymaps
-keymap.set("n", "<leader>cs", ":Copilot status<cr>") -- Copilot activation status
-keymap.set("v", "<leader>cp", ":Copilot panel<cr>")  -- Visual Mode. Copilot options panel
-keymap.set("n", "<leader>cp", ":Copilot panel<cr>")  -- Normal Mode. Copilot options panel
+keymap.set("n", "<leader>cpstatus", ":Copilot status<cr>") -- Copilot activation status
+keymap.set("v", "<leader>cppanel", ":Copilot panel<cr>")  -- Visual Mode. Copilot options panel
+keymap.set("n", "<leader>cpppanel", ":Copilot panel<cr>")  -- Normal Mode. Copilot options panel
 --- Git Keymaps Fugitive
 keymap.set("n", "<leader>Gv", ":vertical Git<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>Gs", ":Git status<cr>")
@@ -162,6 +173,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>")     -- go to previous tab
 -- LSP informations
 keymap.set("n", "<leader>li", ":LspInfo<CR>")         -- Show LSP info
 keymap.set("n", "<leader>lr", ":LspRestart Info<CR>") -- Show LSP info
+
 -- LSP trouble list
 keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")   -- Show LSP info
 keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>")  -- Show LSP info

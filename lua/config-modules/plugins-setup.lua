@@ -89,7 +89,7 @@ return packer.startup(function(use)
 
   --- LSPs for specific languages enhancements
   use("jose-elias-alvarez/typescript.nvim") -- Enhances typescript LSP with specific extra features
-  use("carlsmedstad/vim-bicep") -- Provides syntax highlighting and identation
+  use("carlsmedstad/vim-bicep")             -- Provides syntax highlighting and identation
   -------------------------------------------------------------------
   -------------------------------------------------------------------
 
@@ -229,7 +229,7 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
   ---- Spectree words replacer
-  -- Seach and Replace in Multiple files using regex 
+  -- Seach and Replace in Multiple files using regex
   use("nvim-pack/nvim-spectre")
 
   -- Bookmarks
@@ -257,14 +257,24 @@ return packer.startup(function(use)
   })
 
   -- Issue tracker. List of all issues found by the LSP servers.
+  -- use({
+  --   "folke/trouble.nvim",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   config = function()
+  --     require("trouble").setup()
+  --   end,
+  -- })
+
   use({
     "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("trouble").setup {
+        -- your configuration options here
+      }
+      -- Optional keybindings
+      vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+    end
   })
 
   -------- GIT ---------------

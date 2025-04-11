@@ -109,6 +109,7 @@ chat_gpt.setup({
     },
     submit = "<C-Enter>",
     submit_n = "<Enter>",
+    height = 50
   },
   settings_window = {
     border = {
@@ -122,7 +123,7 @@ chat_gpt.setup({
     },
   },
   openai_params = {
-    model = "o3-mini",
+    model = "gpt-4-0125-preview",
     frequency_penalty = 0,
     presence_penalty = 0,
     max_tokens = 300,
@@ -137,6 +138,7 @@ chat_gpt.setup({
     n = 1,
   },
   actions_paths = {},
+  debug = true,
   show_quickfixes_cmd = "Trouble quickfix",
   predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
 })
