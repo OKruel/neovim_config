@@ -25,6 +25,7 @@ require("config-modules.plugins.themes.gruvbox")
 -- Plugins of artificial intelligence
 require("config-modules.plugins.ai.copilot")
 require("config-modules.plugins.ai.copilot-chat")
+require("config-modules.plugins.ai.avante")
 require("config-modules.plugins.ai.chat-gpt")
 
 
