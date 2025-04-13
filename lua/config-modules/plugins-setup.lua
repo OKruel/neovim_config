@@ -58,15 +58,15 @@ return packer.startup(function(use)
 
   ----------- Language Servers Protocol --------------------------
   ----- Core LSP packages
-  use("neovim/nvim-lspconfig")           --> Core package to configure LSP servers
-  use("williamboman/mason.nvim")         --> UI to install/update/manage and manage LSP servers, linters, and formatters
-  use("hrsh7th/nvim-cmp")                --> The main completion engine for Neovim
-  use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
+  use("neovim/nvim-lspconfig")   --> Core package to configure LSP servers
+  use("williamboman/mason.nvim") --> UI to install/update/manage and manage LSP servers, linters, and formatters
+  use("hrsh7th/nvim-cmp")        --> The main completion engine for Neovim
+  -- use("jose-elias-alvarez/null-ls.nvim") --> Framework for integrating external tools with LSPs (formatter, linters, code scanners, code actions, etc)
 
   ----- Core LSP packages Integration
   use("williamboman/mason-lspconfig.nvim") --> Integrated mason with nvim-lsp
   use("hrsh7th/cmp-nvim-lsp")              --> Integrated nvim-cmp with nvim-lsp
-  use("jayp0521/mason-null-ls.nvim")       --> Integrated mason with null-ls
+  -- use("jayp0521/mason-null-ls.nvim")       --> Integrated mason with null-ls
 
   --- CMP package enhancements
   use("hrsh7th/cmp-buffer")       --> cmp source for buffer words
@@ -208,8 +208,8 @@ return packer.startup(function(use)
   ------- Search files and code -----------
   ---- Nvim file tree
   use({
-    "nvim-tree/nvim-tree.lua",
-    commit = "ec33d4b",
+		  "nvim-tree/nvim-tree.lua", 
+		  commit = "ec33d4b"
   })
   use("nvim-tree/nvim-web-devicons")
 
@@ -256,27 +256,6 @@ return packer.startup(function(use)
     end,
   })
 
-  -- Issue tracker. List of all issues found by the LSP servers.
-  -- use({
-  --   "folke/trouble.nvim",
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  --   config = function()
-  --     require("trouble").setup()
-  --   end,
-  -- })
-
-  use({
-    "folke/trouble.nvim",
-    requires = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("trouble").setup {
-        -- your configuration options here
-      }
-      -- Optional keybindings
-      vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-    end
-  })
-
   -------- GIT ---------------
   -- git integration
   use("lewis6991/gitsigns.nvim")        -- show line modifications on left hand side
@@ -291,16 +270,17 @@ return packer.startup(function(use)
   -- Git Reflog
   use("rbong/vim-flog")                 -- Displays git commits as a graph
 
-  ---------- Artificial Inteligence ----------------
+
   -- Github copilot
   use("github/copilot.vim") -- Github copilot autocomplete
+
   -- Github copilot chat
   use({
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencies = {
       "github/copilot.vim",
       "nvim-lua/plenary.nvim",
+      branch = "master",
     },
     opts = {
       debug = true,
@@ -316,10 +296,33 @@ return packer.startup(function(use)
     requires = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
-      "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim",
     }
   })
+
+  --- Cursor
+
+  -- Required plugins
+  -- use 'stevearc/dressing.nvim'
+  -- use 'MeanderingProgrammer/render-markdown.nvim'
+  --
+  -- -- Optional dependencies
+  -- use 'HakonHarnes/img-clip.nvim'
+  -- use 'zbirenbaum/copilot.lua'
+  --
+  -- -- Avante.nvim with build process
+  -- use {
+  --   'yetone/avante.nvim',
+  --   branch = 'main',
+  --   run = 'make',
+  --   config = function()
+  --     require('avante').setup()
+  --   end
+  -- }
+
+
+
+
 
   ---------- Environment Variables ----------------
   -- Vim Dotenv

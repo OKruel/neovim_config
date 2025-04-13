@@ -8,3 +8,5 @@ vim.keymap.set("i", "<C-s>", "<Plug>(copilot-suggest)", { noremap = false })
 vim.keymap.set("i", "<C-h>", "<Plug>(copilot-dismiss)", { noremap = false })
 vim.keymap.set("i", "<C-j>", "<Plug>(copilot-previous)", { noremap = false })
 vim.keymap.set("i", "<C-k>", "<Plug>(copilot-next)", { noremap = false })
+
+

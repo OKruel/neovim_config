@@ -15,7 +15,6 @@ require("config-modules.plugins.lsp.nvim-cmp")  -- Configures the auto completio
 require("config-modules.plugins.lsp.mason")     -- Manage installation of LSPs and Linters/formatters
 require("config-modules.plugins.lsp.lspsaga")   -- Used with live_grep telescope function
 require("config-modules.plugins.lsp.lspconfig") -- Installation of LSPs
-require("config-modules.plugins.lsp.null-ls")   -- Installation of linters/formatters
 require("config-modules.plugins.lsp.fidget")    -- Displays LSPs status
 
 -- Plugins of Nvim Themes
@@ -25,7 +24,9 @@ require("config-modules.plugins.themes.gruvbox")
 
 -- Plugins of artificial intelligence
 require("config-modules.plugins.ai.copilot")
+require("config-modules.plugins.ai.copilot-chat")
 require("config-modules.plugins.ai.chat-gpt")
+
 
 -- Plugins with custom configuration files
 require("config-modules.plugins.comment")
@@ -51,4 +52,3 @@ require("config-modules.plugins.fine-cmdline")
 require("config-modules.plugins.image")
 require("config-modules.plugins.diagram")
 require("config-modules.plugins.whitespace")
-require("config-modules.plugins.trouble")
