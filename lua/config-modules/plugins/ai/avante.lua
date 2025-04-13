@@ -22,10 +22,12 @@ avante.setup({
   --   max_tokens = 4096,
   -- },
   openai = {
-    api_key = openai_apikey,
-    model = "gpt-4o", -- or gpt-3.5-turbo to save tokens
-    temperature = 0.2,
-    max_tokens = 4096,
+    endpoint = "https://api.openai.com/v1",
+    model = "gpt-4o",               -- your desired model (or use gpt-4o, etc.)
+    timeout = 30000,                -- Timeout in milliseconds, increase this for reasoning models
+    temperature = 0,
+    max_completion_tokens = 8192,   -- Increase this to include reasoning tokens (for reasoning models)
+    --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
   },
   ---Specify the special dual_boost mode
   ---1. enabled: Whether to enable dual_boost mode. Default to false.
@@ -102,7 +104,7 @@ avante.setup({
     ---@type "right" | "left" | "top" | "bottom"
     position = "right", -- the position of the sidebar
     wrap = true,        -- similar to vim.o.wrap
-    width = "%40",      -- default % based on available width
+    width = 40,         -- default % based on available width
     sidebar_header = {
       enabled = true,   -- true, false to enable/disable the header
       align = "center", -- left, center, right for title

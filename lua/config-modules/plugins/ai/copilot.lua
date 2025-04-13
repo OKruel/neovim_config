@@ -60,7 +60,7 @@ copilot.setup({
     end
 
     if vim.bo.buftype ~= "" then
-      logger.debug("not attaching, buffer 'buftype' is " .. vim.bo.buftype)
+      vim.notify("Not attaching, buffer 'buftype' is " .. vim.bo.buftype, vim.log.levels.INFO)
       return false
     end
 

@@ -310,10 +310,7 @@ return packer.startup(function(use)
   use {
     'yetone/avante.nvim',
     branch = 'main',
-    run = 'make',
-    config = function()
-      require('avante').setup()
-    end
+    run = 'make'
   }
 
 

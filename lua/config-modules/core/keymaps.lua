@@ -21,46 +21,41 @@ function DeleteBufferByIndex(index)
 end
 
 ------ Personal keymaps -------
-keymap.set("n", "<leader>fi", ":lua vim.lsp.buf.format()<cr>") -- format code
-keymap.set("n", "<leader>nh", ":nohl<CR>")                     -- Clear the highlighted words
-keymap.set("n", "<leader>cd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>")        -- Insert the current date
-keymap.set("i", "<ESC>", "<ESC>")                         -- In insert mode jk will be the same as esc
-keymap.set("n", "x", '"_x')                               -- The character removed with "x" will not be added to the register
-keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")       -- Display the tree with the recent changes
-keymap.set("n", "<leader>cy", "gg0VGy")                   -- Display the tree with the recent changes
-keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim) -- Trim the whitespaces
-map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true }) -- Display the neovim command line in a nice input
+keymap.set("n", "<leader>fi", ":lua vim.lsp.buf.format()<cr>")         -- format code
+keymap.set("n", "<leader>nh", ":nohl<CR>")                             -- Clear the highlighted words
+keymap.set("n", "<leader>cd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>") -- Insert the current date
+keymap.set("i", "<ESC>", "<ESC>")                                      -- In insert mode jk will be the same as esc
+keymap.set("n", "x", '"_x')                                            -- The character removed with "x" will not be added to the register
+keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")                    -- Display the tree with the recent changes
+keymap.set("n", "<leader>cy", "gg0VGy")                                -- Display the tree with the recent changes
+keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim)         -- Trim the whitespaces
+map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })              -- Display the neovim command line in a nice input
 
 -- PlantUML
-vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", {desc = "Surround with Plant UML", noremap = true, silent = true })
 
 function SurroundWithPlantUML()
-    -- Get the correct start and end positions for visual selection
-    local start_line = vim.fn.line("'<")
-    local end_line = vim.fn.line("'>")
+  -- Get the correct start and end positions for visual selection
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
 
-    -- Ensure start_line is always before end_line
-    if start_line > end_line then
-        start_line, end_line = end_line, start_line
-    end
+  -- Ensure start_line is always before end_line
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
 
-    -- Get the selected lines
-    local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+  -- Get the selected lines
+  local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
 
-    -- Insert opening block at the beginning
-    table.insert(lines, 1, "```plantuml")
-    -- Insert closing block at the end
-    table.insert(lines, "```")
+  -- Insert opening block at the beginning
+  table.insert(lines, 1, "```plantuml")
+  -- Insert closing block at the end
+  table.insert(lines, "```")
 
-    -- Replace the original selected lines with the modified lines
-    vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+  -- Replace the original selected lines with the modified lines
+  vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
 end
 
-
-
-
--- Database Manager
--- keymap.set("n", "<leader>do", ":DBUIToggle<cr>")                                      -- Display the tree with the recent changes
 -- Folding
 keymap.set("n", "<leader>Fi", ":set foldmethod=indent<CR>")
 keymap.set("n", "<leader>Fm", ":set foldmethod=manual<CR>")
@@ -72,28 +67,44 @@ keymap.set("n", "<leader>Fa", "zR")                                             
 keymap.set("n", "<leader>Fl", "<cmd>loadview<CR>", { noremap = true, silent = true }) -- Load the last folding
 keymap.set("n", "<leader>Fs", "<cmd>mkview<CR>", { noremap = true, silent = true })   -- Save the current folding
 --- ChatGPT keymaps
-keymap.set("n", "<leader>cgchat", ":ChatGPT<cr>")
-keymap.set("v", "<leader>cgchat", ":ChatGPT<cr>")
-keymap.set("v", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
-keymap.set("n", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
-keymap.set("v", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
-keymap.set("n", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
-keymap.set("v", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
-keymap.set("n", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
-keymap.set("v", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
-keymap.set("n", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
-keymap.set("v", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
-keymap.set("n", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
-keymap.set("v", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
-keymap.set("n", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
-keymap.set("v", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
-keymap.set("n", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
-keymap.set("n", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
-keymap.set("v", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
---- Copilot keymaps
-keymap.set("n", "<leader>cpstatus", ":Copilot status<cr>") -- Copilot activation status
-keymap.set("v", "<leader>cppanel", ":Copilot panel<cr>")  -- Visual Mode. Copilot options panel
-keymap.set("n", "<leader>cpppanel", ":Copilot panel<cr>")  -- Normal Mode. Copilot options panel
+-- keymap.set("n", "<leader>cgchat", ":ChatGPT<cr>")
+-- keymap.set("v", "<leader>cgchat", ":ChatGPT<cr>")
+-- keymap.set("v", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
+-- keymap.set("n", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
+-- keymap.set("v", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
+-- keymap.set("n", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
+-- keymap.set("v", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
+-- keymap.set("n", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
+-- keymap.set("v", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
+-- keymap.set("n", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
+-- keymap.set("v", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
+-- keymap.set("n", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
+-- keymap.set("v", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
+-- keymap.set("n", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
+-- keymap.set("v", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
+-- keymap.set("n", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
+-- keymap.set("n", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
+-- keymap.set("v", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
+
+--- Github Copilot autocomplete
+keymap.set("n", "<leader>cS", ":Copilot status<cr>", {desc = "Copilot activation status"})
+keymap.set("v", "<leader>cp", ":Copilot panel<cr>", {desc = "Copilot multiple suggestions panel"})
+keymap.set("n", "<leader>cp", ":Copilot panel<cr>", {desc = "Copilot multiple suggestions panel"})
+-- Github Copilot Chat
+keymap.set("n", "<leader>cI", ":CopilotChat<cr>", {desc = "CopilotChat - Input"})
+keymap.set("n", "<leader>cT", ":CopilotChatToggle<cr>", {desc = "CopilotChat - Toggle"})
+keymap.set("n", "<leader>cR", ":CopilotChatReset<cr>", {desc = "CopilotChat - Reset chat"})
+keymap.set("n", "<leader>cS", ":CopilotChatSave<cr>", {desc = "CopilotChat - Save chat history"})
+keymap.set("n", "<leader>cL", ":CopilotChatLoad<cr>", {desc = "CopilotChat - Load chat history"})
+keymap.set("n", "<leader>cM", ":CopilotChatModels<cr>", {desc = "CopilotChat - Models"})
+keymap.set("n", "<leader>cE", ":CopilotChatPrompts explain<cr>", {desc = "CopilotChat - Explain selected code"})
+-- Avante Copilot
+keymap.set("n", "<leader>aA", ":AvanteAsk<cr>", {desc = "Avante - Single question mode"})
+keymap.set("n", "<leader>aC", ":AvanteChat<cr>", {desc = "Avante - Chat Mode"})
+keymap.set("n", "<leader>aS", ":AvanteStop<cr>", {desc = "Avante - Stop current request"})
+keymap.set("n", "<leader>aH", ":AvanteHistory<cr>", {desc = "Avante - Display all chats"})
+keymap.set("n", "<leader>aH", ":AvanteModels<cr>", {desc = "Avante - Show models"})
+
 --- Git Keymaps Fugitive
 keymap.set("n", "<leader>Gv", ":vertical Git<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>Gs", ":Git status<cr>")
@@ -112,13 +123,11 @@ for i = 1, 9 do
   map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i), { silent = true })
 end
 --------- Windows related keymaps --------------
--- Split the windows
-keymap.set("n", "<leader>s|", "<C-w>v")                     -- Split window vertically
-keymap.set("n", "<leader>s-", "<C-w>s")                     -- Split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=")                     -- make split windows equal width
-keymap.set("n", "<leader>sx", ":bdelete<CR>")               -- close the current window
--- Changes window size
-keymap.set("n", "<leader>ss", ":WinResizerStartResize<cr>") -- Increase window size
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Window Manager - Split vertically" })
+keymap.set("n", "<leader>s-", "<C-w>s", { desc = "Window Manager - Split horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Window Manager - Split windows equal width" })
+keymap.set("n", "<leader>sx", ":bdelete<CR>", { desc = "Window Manager - Close current window" })
+keymap.set("n", "<leader>ss", ":WinResizerStartResize<cr>", {desc = "Window Manager - Changes window size"})
 
 -- Nvim Sessions
 keymap.set("n", "<leader>rs", ":SessionsSave<cr>") -- Saves the nvim session
@@ -175,5 +184,5 @@ keymap.set("n", "<leader>li", ":LspInfo<CR>")         -- Show LSP info
 keymap.set("n", "<leader>lr", ":LspRestart Info<CR>") -- Show LSP info
 
 -- LSP trouble list
-keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")   -- Show LSP info
-keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>")  -- Show LSP info
+keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")  -- Show LSP info
+keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>") -- Show LSP info

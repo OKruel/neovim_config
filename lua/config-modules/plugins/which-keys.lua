@@ -36,12 +36,6 @@ which_key.register({
   -- Spectre Multi Files Word search and replace
   ["<leader>sf"] = { '<cmd>lua require("spectre").toggle()<CR>', "Spectre - Open" },
   ["<leader>sw"] = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre - Select Word" },
-  --
-  -- Windows manager plugins
-  ["<leader>sv"] = { "<C-w>v", "Window Manager - Split vertically" },
-  ["<leader>s-"] = { "<C-w>s", "Window Manager - Split horizontally" },
-  ["<leader>s="] = { "<C-w>=", "Window Manager -Make split windows equal width" },
-  ["<leader>sx"] = { ":close<CR>", "Window Manager - Close current window" },
   -- Chat GPT plugins
   ["<leader>cgchat"] = { ":ChatGPT<cr>", "Chat GPT prompt" },
   ["<leader>cgedit"] = { ":ChatGPTEditWithInstructions<cr>", "Edit with Instructions" },
