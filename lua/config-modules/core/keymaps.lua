@@ -21,18 +21,23 @@ function DeleteBufferByIndex(index)
 end
 
 ------ Personal keymaps -------
-keymap.set("n", "<leader>fi", ":lua vim.lsp.buf.format()<cr>")         -- format code
-keymap.set("n", "<leader>nh", ":nohl<CR>")                             -- Clear the highlighted words
-keymap.set("n", "<leader>cd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>") -- Insert the current date
-keymap.set("i", "<ESC>", "<ESC>")                                      -- In insert mode jk will be the same as esc
-keymap.set("n", "x", '"_x')                                            -- The character removed with "x" will not be added to the register
-keymap.set("n", "<leader>u", ":UndotreeToggle<cr>")                    -- Display the tree with the recent changes
-keymap.set("n", "<leader>cy", "gg0VGy")                                -- Display the tree with the recent changes
-keymap.set("n", "<Leader>wt", require("whitespace-nvim").trim)         -- Trim the whitespaces
-map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })              -- Display the neovim command line in a nice input
+keymap.set("n", "<leader>pf", ":lua vim.lsp.buf.format()<cr>", { desc = "Format Code" })
+keymap.set("n", "<leader>ph", ":nohl<CR>", { desc = "Clear the highlighted words" })
+keymap.set("n", "<leader>pd", "a<C-R>=strftime('[%F - %A]')<CR><Esc>", { desc = "Insert the current date" })
+keymap.set("n", "<leader>pc", "gg0VGy", { desc = "Personal - Copy entire file" })
+
+-- Whitespace
+keymap.set("n", "<Leader>pw", require("whitespace-nvim").trim, { desc = "Personal - Trim whitespaces" })
+
+-- CMDline
+map("n", ":", "<cmd>FineCmdline<CR>", { desc = "Nice command line input ui", noremap = true })
+
+-- Undotree
+keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", { desc = "UndoTree - Display latest changes" })
 
 -- PlantUML
-vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>", {desc = "Surround with Plant UML", noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>dp", ":lua SurroundWithPlantUML()<CR>",
+  { desc = "Surround with Plant UML", noremap = true, silent = true })
 
 function SurroundWithPlantUML()
   -- Get the correct start and end positions for visual selection
@@ -57,107 +62,93 @@ function SurroundWithPlantUML()
 end
 
 -- Folding
-keymap.set("n", "<leader>Fi", ":set foldmethod=indent<CR>")
-keymap.set("n", "<leader>Fm", ":set foldmethod=manual<CR>")
-keymap.set("n", "<leader>Fo", "zo")                                                   -- Open folder under the cursor
-keymap.set("n", "<leader>FO", "zO")                                                   -- Open all the folders recursivelly under the cursor
-keymap.set("n", "<leader>Fc", "zc")                                                   -- Close folder under the cursor
-keymap.set("n", "<leader>FC", "zM")                                                   -- Close all foldings
-keymap.set("n", "<leader>Fa", "zR")                                                   -- Open all foldings
-keymap.set("n", "<leader>Fl", "<cmd>loadview<CR>", { noremap = true, silent = true }) -- Load the last folding
-keymap.set("n", "<leader>Fs", "<cmd>mkview<CR>", { noremap = true, silent = true })   -- Save the current folding
---- ChatGPT keymaps
--- keymap.set("n", "<leader>cgchat", ":ChatGPT<cr>")
--- keymap.set("v", "<leader>cgchat", ":ChatGPT<cr>")
--- keymap.set("v", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
--- keymap.set("n", "<leader>cgedit", ":ChatGPTEditWithInstructions<cr>")
--- keymap.set("v", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
--- keymap.set("n", "<leader>cgtest", ":ChatGPTRun summarize<cr>")
--- keymap.set("v", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
--- keymap.set("n", "<leader>cgtest", ":ChatGPTRun add_tests<cr>")
--- keymap.set("v", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
--- keymap.set("n", "<leader>cgcomplete", ":ChatGPTRun complete_code<cr>")
--- keymap.set("v", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
--- keymap.set("n", "<leader>cgexplain", ":ChatGPTRun explain_code<cr>")
--- keymap.set("v", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
--- keymap.set("n", "<leader>cgoptmize", ":ChatGPTRun optimize_code<cr>")
--- keymap.set("v", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
--- keymap.set("n", "<leader>cgfix", ":ChatGPTRun fix_bugs<cr>")
--- keymap.set("n", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
--- keymap.set("v", "<leader>cgread", ":ChatGPTRun code_readability_analysis<cr>")
+keymap.set("n", "<leader>Fi", ":set foldmethod=indent<CR>", { desc = "Folding - Set indent mode" })
+keymap.set("n", "<leader>Fm", ":set foldmethod=manual<CR>", { desc = "Folding - Set manual mode" })
+keymap.set("n", "<leader>Fo", "zo", { desc = "Open folder under the cursor" })
+keymap.set("n", "<leader>FO", "zO", { desc = "Open all the folders recursivelly under the cursor" })
+keymap.set("n", "<leader>Fc", "zc", { desc = "Close folder under the cursor" })
+keymap.set("n", "<leader>FC", "zM", { desc = "Close all foldings" })
+keymap.set("n", "<leader>Fa", "zR", { desc = "Open all foldings" })
 
 --- Github Copilot autocomplete
-keymap.set("n", "<leader>cS", ":Copilot status<cr>", {desc = "Copilot activation status"})
-keymap.set("v", "<leader>cp", ":Copilot panel<cr>", {desc = "Copilot multiple suggestions panel"})
-keymap.set("n", "<leader>cp", ":Copilot panel<cr>", {desc = "Copilot multiple suggestions panel"})
+keymap.set("n", "<leader>cS", ":Copilot status<cr>", { desc = "Copilot activation status" })
+keymap.set("v", "<leader>cp", ":Copilot panel<cr>", { desc = "Copilot multiple suggestions panel" })
+keymap.set("n", "<leader>cp", ":Copilot panel<cr>", { desc = "Copilot multiple suggestions panel" })
 -- Github Copilot Chat
-keymap.set("n", "<leader>cI", ":CopilotChat<cr>", {desc = "CopilotChat - Input"})
-keymap.set("n", "<leader>cT", ":CopilotChatToggle<cr>", {desc = "CopilotChat - Toggle"})
-keymap.set("n", "<leader>cR", ":CopilotChatReset<cr>", {desc = "CopilotChat - Reset chat"})
-keymap.set("n", "<leader>cS", ":CopilotChatSave<cr>", {desc = "CopilotChat - Save chat history"})
-keymap.set("n", "<leader>cL", ":CopilotChatLoad<cr>", {desc = "CopilotChat - Load chat history"})
-keymap.set("n", "<leader>cM", ":CopilotChatModels<cr>", {desc = "CopilotChat - Models"})
-keymap.set("n", "<leader>cE", ":CopilotChatPrompts explain<cr>", {desc = "CopilotChat - Explain selected code"})
--- Avante Copilot
-keymap.set("n", "<leader>aA", ":AvanteAsk<cr>", {desc = "Avante - Single question mode"})
-keymap.set("n", "<leader>aC", ":AvanteChat<cr>", {desc = "Avante - Chat Mode"})
-keymap.set("n", "<leader>aS", ":AvanteStop<cr>", {desc = "Avante - Stop current request"})
-keymap.set("n", "<leader>aH", ":AvanteHistory<cr>", {desc = "Avante - Display all chats"})
-keymap.set("n", "<leader>aH", ":AvanteModels<cr>", {desc = "Avante - Show models"})
+keymap.set("n", "<leader>ci", ":CopilotChat<cr>", { desc = "CopilotChat - Input" })
+keymap.set("n", "<leader>ct", ":CopilotChatToggle<cr>", { desc = "CopilotChat - Toggle" })
+keymap.set("n", "<leader>cr", ":CopilotChatReset<cr>", { desc = "CopilotChat - Reset chat" })
+keymap.set("n", "<leader>cs", ":CopilotChatSave<cr>", { desc = "CopilotChat - Save chat history" })
+keymap.set("n", "<leader>cl", ":CopilotChatLoad<cr>", { desc = "CopilotChat - Load chat history" })
+keymap.set("n", "<leader>cm", ":CopilotChatModels<cr>", { desc = "CopilotChat - Models" })
+keymap.set("n", "<leader>ce", ":CopilotChatPrompts explain<cr>", { desc = "CopilotChat - Explain selected code" })
 
---- Git Keymaps Fugitive
-keymap.set("n", "<leader>Gv", ":vertical Git<cr>", { noremap = true, silent = true })
-keymap.set("n", "<leader>Gs", ":Git status<cr>")
+-- Avante Copilot
+keymap.set("n", "<leader>aa", ":AvanteAsk<cr>", { desc = "Avante - Single question mode" })
+keymap.set("n", "<leader>at", ":AvanteChat<cr>", { desc = "Avante - Toggle Chat Mode" })
+keymap.set("n", "<leader>an", ":AvanteChatNew<cr>", { desc = "Avante - New Chat Mode" })
+keymap.set("n", "<leader>ax", ":AvanteClear<cr>", { desc = "Avante - Clear chat history" })
+keymap.set("n", "<leader>as", ":AvanteStop<cr>", { desc = "Avante - Stop current request" })
+keymap.set("n", "<leader>ah", ":AvanteHistory<cr>", { desc = "Avante - Display all chats" })
+keymap.set("n", "<leader>am", ":AvanteModels<cr>", { desc = "Avante - Show models" })
+keymap.set("v", "<leader>ae", ":AvanteEdit<cr>", { desc = "Avante - Edit te selected code blocks" })
+
+--- Git Fugitive
+keymap.set("n", "<leader>gv", ":vertical Git<cr>",
+  { desc = "Git Fugitive - Open Changes Vertical", noremap = true, silent = true })
+keymap.set("n", "<leader>gs", ":Git status<cr>", { desc = "Git Fugitive - Display status" })
+
 -- Git diff
-keymap.set("n", "<leader>Go", ":DiffviewOpen <Tab>")
-keymap.set("n", "<leader>Gx", ":DiffviewClose<cr>")
-keymap.set("n", "<leader>Gh", ":DiffviewFileHistory<cr>")
-keymap.set("n", "<leader>Gc", ":DiffviewClose<cr>")
+keymap.set("n", "<leader>go", ":DiffviewOpen <Tab>", { desc = "Git Fugitive - Open branch list to compare" })
+keymap.set("n", "<leader>gx", ":DiffviewClose<cr>", { desc = "Git Fugitive - Close Diff viewer" })
+keymap.set("n", "<leader>gh", ":DiffviewFileHistory<cr>", { desc = "Git Fugitive - Display file history" })
+keymap.set("n", "<leader>gc", ":DiffviewClose<cr>", { desc = "Git Fugitive - Close Diff viewer" })
+
 -- Git Log/Reflog
-keymap.set("n", "<leader>Gl", ":Flogsplit<cr>")
+keymap.set("n", "<leader>gl", ":Flogsplit<cr>", { desc = "Git Fugitive - Open git log" })
+
 -- Cokeline
-keymap.set("n", "<Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
-keymap.set("n", "<Leader>p", "<Plug>(cokeline-switch-prev)", { silent = true })
-keymap.set("n", "<Leader>n", "<Plug>(cokeline-switch-next)", { silent = true })
+keymap.set("n", "<Tab>", "<Plug>(cokeline-focus-next)", { desc = "Cokeline - Next buffer", silent = true })
 for i = 1, 9 do
   map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i), { silent = true })
 end
 --------- Windows related keymaps --------------
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Window Manager - Split vertically" })
-keymap.set("n", "<leader>s-", "<C-w>s", { desc = "Window Manager - Split horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Window Manager - Split windows equal width" })
-keymap.set("n", "<leader>sx", ":bdelete<CR>", { desc = "Window Manager - Close current window" })
-keymap.set("n", "<leader>ss", ":WinResizerStartResize<cr>", {desc = "Window Manager - Changes window size"})
+keymap.set("n", "<leader>Wv", "<C-w>v", { desc = "Window Manager - Split vertically" })
+keymap.set("n", "<leader>W-", "<C-w>s", { desc = "Window Manager - Split horizontally" })
+keymap.set("n", "<leader>We", "<C-w>=", { desc = "Window Manager - Split windows equal width" })
+keymap.set("n", "<leader>Wx", ":bdelete<CR>", { desc = "Window Manager - Close current window" })
+keymap.set("n", "<leader>Ws", ":WinResizerStartResize<cr>", { desc = "Window Manager - Changes window size" })
 
 -- Nvim Sessions
-keymap.set("n", "<leader>rs", ":SessionsSave<cr>") -- Saves the nvim session
-keymap.set("n", "<leader>rl", ":SessionsLoad<cr>") -- Loads the previous session
+keymap.set("n", "<leader>ss", ":SessionsSave<cr>", { desc = "Sessions - Saves" })
+keymap.set("n", "<leader>sl", ":SessionsLoad<cr>", { desc = "Sessions - Load previous session" })
 
--- Move to the file nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>")
-keymap.set("n", "<leader>ex", ":NvimTreeToggle<CR>")
+-- NvimTree
+keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree - Focus" })
+keymap.set("n", "<leader>ex", ":NvimTreeToggle<CR>", { desc = "NvimTree - Toggle" })
 
 ------ Telescope -----------------------
 vim.keymap.set("n", "<leader>fh", function()
   builtin.find_files({ find_command = { "rg", "--files", "--hidden" } })
-end)
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+end, { desc = "Telescope - Search hidden files" })
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope - Search files" })
 keymap.set("n", "<leader>fa", function()
   builtin.find_files({ cwd = "~" })
-end)
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
-keymap.set("n", "<leader>fo", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fb", ":lua require(bookmarks).extensions.bookmarks.list({layout_strategy='vertical'})") -- Bookmarks
--- Telescope Git worktrees
-keymap.set("n", "<leader>fwo", ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>")          -- Display the workstrees with telescope
-keymap.set("n", "<leader>fwa", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>")    -- Use telescope to create a new git worktree
+end, { desc = "Telescope - Search files in home directory" })
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>",
+  { desc = "Telescope - Search string in current working directory" })
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Telescope - Search string inside selection" })
+keymap.set("n", "<leader>fo", "<cmd>Telescope buffers<cr>", { desc = "Telescope - List open buffers" })
+keymap.set("n", "<leader>fb", ":lua require(bookmarks).extensions.bookmarks.list({layout_strategy='vertical'})",
+  { desc = "Telescope - List bookmarks" })
+keymap.set("n", "<leader>fw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
+  { desc = "Telescope - List git worktrees" })
 
 ------ Spectre ---------
-keymap.set("n", "<leader>sf", '<cmd>lua require("spectre").toggle()<CR>', {
+keymap.set("n", "<leader>Sf", '<cmd>lua require("spectre").toggle()<CR>', {
   desc = "Toggle Spectre",
 })
-keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+keymap.set("n", "<leader>Sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
   desc = "Search current word",
 })
 keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
@@ -167,21 +158,23 @@ keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({sel
   desc = "Search on current file",
 })
 
+-- Buffer Management ------
+keymap.set("n", "<leader>Bo", "<cmd>lua require('buffer_manager.ui').toggle_quick_menu()<cr>",
+  { desc = "Buffer Management - Toggle" })
+
+
 -- Harpoon ------
 -- The file can be removed from harpoon from within the navigation window
-keymap.set("n", "<leader>ho", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>") -- Toggle the harpoon view
-keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>")        -- Add file to harpoon
+keymap.set("n", "<leader>ho", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+  { desc = "Harpoon - Toggle" })
+keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "Harpoon - Add file" })
 
--- Managing tabs
-keymap.set("n", "<leader>to", ":tabnew<CR>")   -- Open a new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- Close a tab
-keymap.set("n", "<leader>tn", ":tabn<CR>")     -- go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>")     -- go to previous tab
 
 --- LSP ---------
 -- LSP informations
-keymap.set("n", "<leader>li", ":LspInfo<CR>")         -- Show LSP info
-keymap.set("n", "<leader>lr", ":LspRestart Info<CR>") -- Show LSP info
+keymap.set("n", "<leader>li", ":LspInfo<CR>", { desc = "LSP - Show info" })
+keymap.set("n", "<leader>lr", ":LspRestart Info<CR>", { desc = "LSP - Restart" })
+keymap.set("n", "<leader>ls", ":LspSaga def+ref+imp<CR>", { desc = "LSPSaga - Find dependencies" })
 
 -- LSP trouble list
 keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")  -- Show LSP info

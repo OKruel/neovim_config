@@ -232,9 +232,6 @@ return packer.startup(function(use)
   -- Seach and Replace in Multiple files using regex
   use("nvim-pack/nvim-spectre")
 
-  -- Bookmarks
-  use("tomasky/bookmarks.nvim") -- Add/List/Seach marks to the code
-
   -- Harpoon
   use("ThePrimeagen/harpoon") -- Track files that you want to give attention to.
 

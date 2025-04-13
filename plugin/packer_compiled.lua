@@ -110,11 +110,6 @@ _G.packer_plugins = {
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/blame_line.nvim",
     url = "https://github.com/braxtons12/blame_line.nvim"
   },
-  ["bookmarks.nvim"] = {
-    loaded = true,
-    path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/bookmarks.nvim",
-    url = "https://github.com/tomasky/bookmarks.nvim"
-  },
   ["buffer_manager.nvim"] = {
     loaded = true,
     path = "/home/olavokruel/.local/share/nvim/site/pack/packer/start/buffer_manager.nvim",
@@ -406,14 +401,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: ChatGPT.nvim
-time([[Config for ChatGPT.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fchatgpt\frequire\0", "config", "ChatGPT.nvim")
-time([[Config for ChatGPT.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: ChatGPT.nvim
+time([[Config for ChatGPT.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fchatgpt\frequire\0", "config", "ChatGPT.nvim")
+time([[Config for ChatGPT.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
