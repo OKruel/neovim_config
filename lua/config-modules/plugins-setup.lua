@@ -271,21 +271,22 @@ return packer.startup(function(use)
   use("rbong/vim-flog")                 -- Displays git commits as a graph
 
 
-  -- Github copilot
-  use("github/copilot.vim") -- Github copilot autocomplete
+  -------- Artificial Inteligence ---------------
+  -- Github copilot autocomplete
+  use("zbirenbaum/copilot.lua")
 
   -- Github copilot chat
   use({
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
-      "github/copilot.vim",
+      "zbirenbaum/copilot.lua",
       "nvim-lua/plenary.nvim",
       branch = "master",
     },
     opts = {
       debug = true,
     },
-  }) -- AI Copilot Chat
+  })
 
   -- ChatGpt
   use({
@@ -300,8 +301,7 @@ return packer.startup(function(use)
     }
   })
 
-  --- Cursor
-
+  --- Avanti
   -- Required plugins
   -- use 'stevearc/dressing.nvim'
   -- use 'MeanderingProgrammer/render-markdown.nvim'
