@@ -176,6 +176,5 @@ keymap.set("n", "<leader>li", ":LspInfo<CR>", { desc = "LSP - Show info" })
 keymap.set("n", "<leader>lr", ":LspRestart Info<CR>", { desc = "LSP - Restart" })
 keymap.set("n", "<leader>ls", ":LspSaga def+ref+imp<CR>", { desc = "LSPSaga - Find dependencies" })
 
--- LSP trouble list
-keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")  -- Show LSP info
-keymap.set("n", "<leader>xr", ":TroubleRefresh<CR>") -- Show LSP info
+-- -- LSP trouble list
+keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle<CR>", {desc = "Trouble - toggle"})

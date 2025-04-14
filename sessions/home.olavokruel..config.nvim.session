@@ -13,12 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +4 lua/config-modules/plugins-setup.lua
-badd +42 lua/config-modules/plugins/catppuccin.lua
+badd +9 lua/config-modules/plugins/ai/copilot-chat.lua
+badd +16 init.lua
+badd +97 lua/config-modules/plugins-setup.lua
+badd +1 lua/config-modules/plugins/autopairs.lua
+badd +7 lua/config-modules/plugins/lsp/trouble.lua
 argglobal
 %argdel
-$argadd NvimTree_1
-edit lua/config-modules/plugins/catppuccin.lua
+$argadd ~/vimwiki/Kubernetes/kubernetes.md
+edit init.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,71 +41,69 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 30 + 109) / 218)
-exe 'vert 2resize ' . ((&columns * 93 + 109) / 218)
-exe 'vert 3resize ' . ((&columns * 93 + 109) / 218)
+exe 'vert 1resize ' . ((&columns * 31 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 112 + 128) / 256)
+exe 'vert 3resize ' . ((&columns * 111 + 128) / 256)
 argglobal
 enew
 file NvimTree_1
-balt lua/config-modules/plugins/catppuccin.lua
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
+balt lua/config-modules/plugins/ai/copilot-chat.lua
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal nofoldenable
 lcd ~/.config/nvim
 wincmd w
 argglobal
 balt ~/.config/nvim/lua/config-modules/plugins-setup.lua
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 42 - ((26 * winheight(0) + 18) / 37)
+setlocal foldmethod=expr
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+let s:l = 16 - ((10 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 42
-normal! 019|
+keepjumps 16
+normal! 032|
 lcd ~/.config/nvim
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.config/nvim/lua/config-modules/plugins/catppuccin.lua", ":p")) | buffer ~/.config/nvim/lua/config-modules/plugins/catppuccin.lua | else | edit ~/.config/nvim/lua/config-modules/plugins/catppuccin.lua | endif
+if bufexists(fnamemodify("~/.config/nvim/lua/config-modules/plugins/lsp/trouble.lua", ":p")) | buffer ~/.config/nvim/lua/config-modules/plugins/lsp/trouble.lua | else | edit ~/.config/nvim/lua/config-modules/plugins/lsp/trouble.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/config-modules/plugins/catppuccin.lua
+  silent file ~/.config/nvim/lua/config-modules/plugins/lsp/trouble.lua
 endif
-balt ~/.config/nvim/lua/config-modules/plugins-setup.lua
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 18) / 37)
+balt ~/.config/nvim/lua/config-modules/plugins/autopairs.lua
+setlocal foldmethod=indent
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+7
+normal! zo
+let s:l = 7 - ((6 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 7
-normal! 02|
+normal! 011|
 lcd ~/.config/nvim
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 30 + 109) / 218)
-exe 'vert 2resize ' . ((&columns * 93 + 109) / 218)
-exe 'vert 3resize ' . ((&columns * 93 + 109) / 218)
+3wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 112 + 128) / 256)
+exe 'vert 3resize ' . ((&columns * 111 + 128) / 256)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

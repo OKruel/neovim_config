@@ -16,6 +16,7 @@ require("config-modules.plugins.lsp.mason")     -- Manage installation of LSPs a
 require("config-modules.plugins.lsp.lspsaga")   -- Used with live_grep telescope function
 require("config-modules.plugins.lsp.lspconfig") -- Installation of LSPs
 require("config-modules.plugins.lsp.fidget")    -- Displays LSPs status
+require("config-modules.plugins.lsp.trouble")    -- Displays diagnostics in a list
 
 -- Plugins of Nvim Themes
 require("config-modules.plugins.themes.catppuccin")

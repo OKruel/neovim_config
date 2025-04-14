@@ -90,6 +90,10 @@ return packer.startup(function(use)
   --- LSPs for specific languages enhancements
   use("jose-elias-alvarez/typescript.nvim") -- Enhances typescript LSP with specific extra features
   use("carlsmedstad/vim-bicep")             -- Provides syntax highlighting and identation
+
+
+  --- LSPs error handling
+  use("folke/trouble.nvim") -- Displays the errors in a list
   -------------------------------------------------------------------
   -------------------------------------------------------------------
 
